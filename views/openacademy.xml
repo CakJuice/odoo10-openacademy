@@ -90,6 +90,13 @@
 			<field name="model">openacademy.session</field>
 			<field name="arch" type="xml">
 				<form string="Session Form">
+					<header>
+						<button name="action_draft" type="object" string="Reset to draft" states="confirmed,done"/>
+						<button name="action_confirm" type="object" string="Confirm" states="draft" class="oe_highlight"/>
+						<button name="action_done" type="object" string="Mark as done" states="confirmed" class="oe_highlight"/>
+						<field name="state" widget="statusbar"/>
+					</header>
+
 					<sheet>
 						<group>
 							<group string="General">
@@ -137,7 +144,7 @@
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="session_gantt_view">
+		<!-- <record model="ir.ui.view" id="session_gantt_view">
 			<field name="name">session.gantt</field>
 			<field name="model">openacademy.session</field>
 			<field name="arch" type="xml">
@@ -145,7 +152,7 @@
 					<field name="name"/>
 				</gantt>
 			</field>
-		</record>
+		</record> -->
 
 		<record model="ir.ui.view" id="openacademy_session_graph_view">
 			<field name="name">openacademy.session.graph</field>
@@ -204,7 +211,8 @@
 			<field name="name">Sessions</field>
 			<field name="res_model">openacademy.session</field>
 			<field name="view_type">form</field>
-			<field name="view_mode">tree,form,calendar,gantt,graph,kanban</field>
+			<!-- <field name="view_mode">tree,form,calendar,gantt,graph,kanban</field> -->
+			<field name="view_mode">tree,form,calendar,graph,kanban</field>
 		</record>
 
 		<menuitem id="session_menu" name="Sessions" parent="openacademy_menu" action="session_list_action" />
